@@ -28,7 +28,7 @@ function addTask() {
     message.innertext = "";
     addToList(userText);
   }
-};
+}
 
 //Function for adding li element to ul.
 function addToList(taskItem) {
@@ -47,46 +47,43 @@ function addToList(taskItem) {
   const deleteIcon = document.createElement("i");
   deleteIcon.classList.add("fas", "fa-trash");
   deleteButton.appendChild(deleteIcon);
-  listItem.appendChild(deleteButton);
   li.appendChild(deleteButton);
   listItem.appendChild(li);
 
   //Eventlistener from delete button
-  deleteButton.addEventListener("click", function(){
+  deleteButton.addEventListener("click", function () {
     deleteTask(li);
   });
 
   //eventlistener for checkbox
-  checkMark.addEventListener("click", function(){
+  checkMark.addEventListener("click", function () {
     taskComplete(li);
   });
 
   //Update taskcounter
   taskCount++;
   updateTaskCount();
-};
+}
 
 //Function for delete task
 function deleteTask(li) {
-const index = Array.from(listItem.children).indexOf(li);
-listItem.removeChild(li);
-taskArray.splice(index, 1);
-taskCount--;
-updateTaskCount();
-};
-
+  const index = Array.from(listItem.children).indexOf(li);
+  listItem.removeChild(li);
+  taskArray.splice(index, 1);
+  taskCount--;
+  updateTaskCount();
+}
 
 //Function for checking a task as complete
-function taskComplete(li){
-    if (li.classList.contains("taskCompleted")){
-        li.classList.remove("taskCompleted");
-        taskCount++;
-    } else {
-        li.classList.add("taskCompleted");
-        taskCount--;
-    }
-    updateTaskCount();
-
+function taskComplete(li) {
+  if (li.classList.contains("taskCompleted")) {
+    li.classList.remove("taskCompleted");
+    taskCount++;
+  } else {
+    li.classList.add("taskCompleted");
+    taskCount--;
+  }
+  updateTaskCount();
 }
 //update task counter
 function updateTaskCount() {
