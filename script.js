@@ -25,7 +25,7 @@ function addTask() {
     //Push object to array
     taskArray.push(taskObject);
     inputText.value = "";
-    message.innertext = "";
+    message.innerText = "";
     addToList(userText);
   }
 }
@@ -68,6 +68,9 @@ function addToList(taskItem) {
 //Function for delete task
 function deleteTask(li) {
   const index = Array.from(listItem.children).indexOf(li);
+  if (li.classList.contains("taskCompleted")){
+    taskCount++;
+  }
   listItem.removeChild(li);
   taskArray.splice(index, 1);
   taskCount--;
